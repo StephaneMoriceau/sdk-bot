@@ -4,6 +4,7 @@ box:
     - $PORT
 
 #Build our application 
-- internal/docker-build:
-    dockerfile: Dockerfile
-    image-name: sdkbot
+build:
+  - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: sdkbot
