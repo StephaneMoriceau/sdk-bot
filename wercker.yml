@@ -7,9 +7,10 @@ box:
 build:
   steps:
     - script:
-        code: ls -al
-        code: cd bots-client-sdk-js-18.2.3.0
-        code: ls -al
+        code: |
+          ls -al
+          cd bots-client-sdk-js-18.2.3.0
+          ls -al
     - internal/docker-build:
         dockerfile: Dockerfile
         image-name: sdkbot
