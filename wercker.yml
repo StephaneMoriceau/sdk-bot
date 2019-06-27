@@ -1,0 +1,9 @@
+box:
+  id: alpine
+  ports:
+    - $PORT
+
+#Build our application 
+- internal/docker-build:
+    dockerfile: Dockerfile
+    image-name: sdkbot
