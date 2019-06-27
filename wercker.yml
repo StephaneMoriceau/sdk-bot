@@ -1,9 +1,13 @@
 box:
-  id: alpine
+  id: openjdk
   ports:
     - $PORT
 
 #Build our application 
-- internal/docker-build:
-    dockerfile: Dockerfile
-    image-name: sdkbot
+build:
+  steps:
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: sdkbot
+    - script:
+        cmd: ls -al
