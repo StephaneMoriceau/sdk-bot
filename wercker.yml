@@ -5,6 +5,9 @@ box:
 
 #Build our application 
 build:
-  - internal/docker-build:
-      dockerfile: Dockerfile
-      image-name: sdkbot
+  steps:
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: sdkbot
+    - script:
+        cmd: ls -al
