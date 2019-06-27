@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sdkbot-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sdkbot-app
+  template:
+    metadata:
+      labels:
+        app: sdkbot-app
+    spec:
+      containers:
+      - name: sdkbot-container
+        image: sdkbot
+        imagePullPolicy: Always
+        ports:
+        - name: sdk-app-port
+          containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+        - name: wercker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdkbot-service
+  labels:
+    app: sdkbot-app
+spec:
+  ports:
+  - port: 30000
+    targetPort: 80
+  selector:
+    app: sdkbot-app
+  type: LoadBalancer
