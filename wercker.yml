@@ -12,6 +12,7 @@ build:
           cd bots-client-sdk-js-18.2.3.0
           ls -al
     - internal/docker-build:
+        context: bots-client-sdk-js-18.2.3.0
         dockerfile: Dockerfile
         image-name: sdkbot
     - script:
