@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdkbot-service
+  labels:
+    app: sdkbot-app
+spec:
+  ports:
+  - port: 30000
+    targetPort: 80
+  selector:
+    app: sdkbot-app
+  type: LoadBalancer
