@@ -15,11 +15,11 @@ spec:
         app: sdk-bot
     spec:
       containers:
-      - name: sdk-bot
+      - name: sdkbot
         image: ${DOCKER_REPO}
         imagePullPolicy: Always
         ports:
-        - name: sdk-bot
+        - name: sdkbot
           containerPort: 8080
           protocol: TCP
       imagePullSecrets:
