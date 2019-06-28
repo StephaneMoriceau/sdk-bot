@@ -17,3 +17,12 @@ build:
         image-name: sdkbot
     - script:
         code: ls -al
+        
+deploy-service:
+  steps:
+     - kubectl:
+        name: apply service    
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: apply -f service.yml
