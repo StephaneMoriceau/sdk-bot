@@ -1,38 +1,27 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sdkbot-app
+  name: sdk-bot
+  labels:
+    commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sdkbot-app
+      app: sdk-bot
   template:
     metadata:
       labels:
-        app: sdkbot-app
+        app: sdk-bot
+        commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: sdkbot-container
-        image: sdkbot
+      - name: sdk-bot
+        image: $DOCKER_REPO:$WERCKER_GIT_COMMIT
         imagePullPolicy: Always
         ports:
-        - name: sdk-app-port
-          containerPort: 80
+        - name: sdk-bot
+          containerPort: 8080
           protocol: TCP
       imagePullSecrets:
-        - name: wercker
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sdkbot-service
-  labels:
-    app: sdkbot-app
-spec:
-  ports:
-  - port: 30000
-    targetPort: 80
-  selector:
-    app: sdkbot-app
-  type: LoadBalancer
+        - name: $OKE_IMAGESECRET

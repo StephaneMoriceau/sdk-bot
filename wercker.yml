@@ -27,7 +27,48 @@ push-release:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
-        registry: $DOCKER_REGISTRY        
+        registry: $DOCKER_REGISTRY
+        
+#Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
+deploy-to-cluster:
+    box:
+        id: alpine
+        cmd: /bin/sh
+    steps:
+
+    - bash-template
+
+    - script:
+        name: "Visualise Kubernetes config"
+        code: cat kubernetes.yml
+
+    #- kubectl:
+    #    name: apply namespace    
+    #    server: $KUBERNETES_MASTER
+    #    token: $KUBERNETES_TOKEN
+    #    insecure-skip-tls-verify: true
+    #    command: apply -f ./ns.yml
+    - kubectl:
+        name: delete OCR secret
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        # command: delete secret okeworkshop --namespace=$NS --ignore-not-found=true
+        command: delete secret sdk-bot --ignore-not-found=true
+    - kubectl:
+        name: create OCR secret
+        server: $KUBERNETES_SERVER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        # command: create secret docker-registry okeworkshop --docker-server=iad.ocir.io --docker-username=$DOCKER_USERNAME --docker-password="$DOCKER_PASSWORD" --docker-email=${WERCKER_APPLICATION+OWNER_NAME}@mail.com --namespace="$NS"
+        command: create secret docker-registry sdk-bot --docker-server=phx.ocir.io --docker-username=$DOCKER_USERNAME --docker-password="$DOCKER_PASSWORD" --docker-email=${WERCKER_APPLICATION+OWNER_NAME}@mail.com
+    - kubectl:
+        name: deploy to kubernetes
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        #command: apply -f ./kubernetes.yml --namespace=$NS    
+        command: apply -f ./kubernetes.yml            
         
 deploy-service:
   steps:
