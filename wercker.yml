@@ -20,6 +20,15 @@ build:
     - script:
         code: ls -al
         
+#Push the docker image with our built and tested application to the Oracle Container Registry
+push-release:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        repository: $DOCKER_REPO
+        registry: $DOCKER_REGISTRY        
+        
 deploy-service:
   steps:
      - kubectl:
