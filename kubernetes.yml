@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sdk-bot
-        image: $DOCKER_REPO
+        image: ${DOCKER_REPO}
         imagePullPolicy: Always
         ports:
         - name: sdk-bot
