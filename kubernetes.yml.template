@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sdk-bot
+  name: sdkbot
   labels:
-    app: sdk-bot
+    app: sdkbot
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sdk-bot
+      app: sdkbot
   template:
     metadata:
       labels:
-        app: sdk-bot
+        app: sdkbot
     spec:
       containers:
       - name: sdkbot

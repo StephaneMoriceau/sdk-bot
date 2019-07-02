@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: sdkbot-service
   labels:
-    app: sdkbot-app
+    app: sdkbot
 spec:
   ports:
-  - port: 30000
-    targetPort: 80
+  - port: 80
+    targetPort: 8080
   selector:
     app: sdkbot-app
   type: LoadBalancer
