@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: sdk-bot
   labels:
-    commit: $WERCKER_GIT_COMMIT
+    app: sdk-bot
 spec:
   replicas: 2
   selector:
@@ -13,7 +13,6 @@ spec:
     metadata:
       labels:
         app: sdk-bot
-        commit: $WERCKER_GIT_COMMIT
     spec:
       containers:
       - name: sdkbot
