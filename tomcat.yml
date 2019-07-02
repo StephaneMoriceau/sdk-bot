@@ -5,7 +5,7 @@ metadata:
 spec:
    containers:
    - name: Tomcat
-      image: tomcat: 8.0
+      image: tomcat: 9.0
       ports:
-containerPort: 7500
-   imagePullPolicy: Always
+        containerPort: 7500
+      imagePullPolicy: Always
