@@ -1,5 +1,6 @@
 box:
-  id: openjdk
+  id: alpine
+  cmd: /bin/sh
   ports:
     - $PORT
 
