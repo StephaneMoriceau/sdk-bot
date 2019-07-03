@@ -1,6 +1,6 @@
 box:
-  id: alpine
-  cmd: /bin/bash
+  id: tomcat:9.0-alpine
+  #cmd: /bin/sh
   ports:
     - $PORT
 
