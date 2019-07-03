@@ -20,6 +20,12 @@ build:
         image-name: sdkbot
     - script:
         code: ls -al
+    - internal/docker-push:
+        image-name: sdkbot
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        repository: $DOCKER_REPO
+        registry: $DOCKER_REGISTRY    
         
 #Push the docker image with our built and tested application to the Oracle Container Registry
 push-release:
