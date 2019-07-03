@@ -1,6 +1,6 @@
 box:
   id: alpine
-  cmd: /bin/sh
+  cmd: /bin/bash
   ports:
     - $PORT
 
