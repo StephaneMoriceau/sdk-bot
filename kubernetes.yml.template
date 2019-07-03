@@ -18,7 +18,8 @@ spec:
       - name: sdkbot
         image: $DOCKER_REPO
         imagePullPolicy: Always
-        command: ["/bin/bash", "-ce", "tail -f /dev/null"]
+        # command: ["/bin/bash", "-ce", "tail -f /dev/null"]
+        command: ["catalina.sh", "run"]
         ports:
         - name: sdkbot
           containerPort: 8080
