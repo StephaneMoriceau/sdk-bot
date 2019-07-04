@@ -87,7 +87,8 @@ deploy-service:
          name: "Create a self-signed certificate"
          code: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=sdkbotsvc/O=sdkbotsvc"
      - script:
-         name" "Visualize tls.cert"
+         name: "Visualize tls.cert"
+         code: cat tls.key
      - kubectl:
         name: Create a TLS secret    
         server: $KUBERNETES_MASTER
