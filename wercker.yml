@@ -107,7 +107,7 @@ deploy-service:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
-        command: kubectl create secret tls ssl-certificate-secret --key tls.key --cert tls.crt
+        command: create secret tls ssl-certificate-secret --key tls.key --cert tls.crt
      - kubectl:
         name: apply service    
         server: $KUBERNETES_MASTER
