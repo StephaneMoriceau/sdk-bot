@@ -91,6 +91,16 @@ deploy-service:
          code: |
                cat tls.key
                ls -al
+deploy-service:
+     box:
+         id: alpine
+         cmd: /bin/sh
+     steps:
+     - script: 
+         name: "Visualize tls.cert"
+         code: |
+               cat tls.key
+               ls -al                  
      - kubectl:
         name: Create a TLS secret    
         server: $KUBERNETES_MASTER
