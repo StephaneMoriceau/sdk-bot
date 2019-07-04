@@ -100,6 +100,7 @@ deploy-service:
          name: "Visualize tls.cert"
          code: |
                cat tls.key
+               cat tls.crt
                ls -al                  
      - kubectl:
         name: Create a TLS secret    
