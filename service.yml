@@ -4,12 +4,17 @@ metadata:
   name: sdkbot-service
   labels:
     app: sdkbot
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"
+    service.beta.kubernetes.io/oci-load-balancer-tls-secret: ssl-certificate-secret  
 spec:
   ports:
   - name: https
-    protocol: TCP
-    port: 8001
+    port: 443
     targetPort: 8080
+  - name: http
+    port: 8081
+    targetport: 8080  
   selector:
     app: sdkbot
   type: LoadBalancer

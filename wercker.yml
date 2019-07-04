@@ -79,7 +79,16 @@ deploy-to-cluster:
         command: apply -f ./kubernetes.yml            
         
 deploy-service:
+  box:
+        id: alpine
+        cmd: /bin/sh
   steps:
+     - script:
+         name: "Create a self-signed certificate"
+         code: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=sdkbotsvc/O=sdkbotsvc"
+     - script:
+         name: "Create a TLS secret"
+         code: kubectl create secret tls ssl-certificate-secret --key tls.key --cert tls.crt
      - kubectl:
         name: apply service    
         server: $KUBERNETES_MASTER
