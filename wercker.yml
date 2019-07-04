@@ -78,7 +78,7 @@ deploy-to-cluster:
         #command: apply -f ./kubernetes.yml --namespace=$NS    
         command: apply -f ./kubernetes.yml            
         
-deploy-service:
+create-cert:
     box:
         id: emberstack/openssl
         #cmd: /bin/sh
