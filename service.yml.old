@@ -6,9 +6,7 @@ metadata:
     app: sdkbot
 spec:
   ports:
-  - name: https
-    protocol: TCP
-    port: 8001
+  - port: 8001
     targetPort: 8080
   selector:
     app: sdkbot
