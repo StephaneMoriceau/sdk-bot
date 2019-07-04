@@ -103,7 +103,13 @@ deploy-service:
                cat tls.crt
                ls -al                  
      - kubectl:
-        name: Create a TLS secret    
+        name: delete TLS secret
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: delete secret tls ssl-certificate-secret --ignore-not-found=true
+     - kubectl:
+        name: create TLS secret    
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
