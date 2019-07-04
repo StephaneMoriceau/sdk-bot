@@ -12,7 +12,7 @@ build:
           ls -al
           cd bots-client-sdk-js-18.2.3.0
           ls -al
-          ./configure http://132.145.86.19/sdk-bot
+          ./configure http://132.145.86.133/sdk-bot
           ls -al
     - internal/docker-build:
         context: bots-client-sdk-js-18.2.3.0
