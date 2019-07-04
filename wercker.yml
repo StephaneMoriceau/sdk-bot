@@ -80,7 +80,7 @@ deploy-to-cluster:
         
 deploy-service:
   box:
-        id: alpine
+        id: frapsoft/openssl
         cmd: /bin/sh
   steps:
      - script:
