@@ -1,6 +1,6 @@
 box:
-  id: alpine
-  cmd: /bin/sh
+  id: unbuntu
+  #cmd: /bin/sh
   ports:
     - $PORT
 
