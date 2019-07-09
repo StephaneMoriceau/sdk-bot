@@ -1,5 +1,5 @@
 box:
-  id: unbuntu
+  id: ubuntu
   #cmd: /bin/sh
   ports:
     - $PORT
